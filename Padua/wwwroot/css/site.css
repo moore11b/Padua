@@ -1,0 +1,82 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+.navbar-fixed-top {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 40px;
+}
+
+.nav a {
+    font-size: 1.3em !important;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    box-sizing: border-box;
+    background-color: #333;
+    color: #D1DAE0;
+    font-size: 1.1em;
+}
+
+a:link {
+    color: white;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #D0E;
+}
+
+a:hover {
+    color: blue;
+    background-color: #F9F9F9;
+}
+
+p {
+    text-indent: 50px;
+    font-size:15pt;
+}
+
+.logo-image {
+    position: relative;
+    top: -15px;
+    width: 50px;
+    height: 50px;
+}
+
+.about-logo {
+    float: left;
+    padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+}
