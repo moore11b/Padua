@@ -29,7 +29,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" rel="home" href="/" title="PADUA">
-                        <img class="logo-image" src="https://freepngimg.com/thumb/graphic_design/48045-9-gps-picture-free-clipart-hq.png">
+                        <img class="navbar-brand" src="https://freepngimg.com/thumb/graphic_design/48045-9-gps-picture-free-clipart-hq.png">
                     </a>
                 </div>
 
@@ -42,13 +42,19 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Secure Device Tips<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
+                                    <li><a href="https://security.berkeley.edu/resources/best-practices-how-to-articles/top-10-secure-computing-tips">Top 10 Secure Computing</a></li>
+                                    <li><a href="https://www.us-cert.gov/ncas/tips">US Government CISA</a></li>
+                                    <li><a href="https://heimdalsecurity.com/blog/cyber-security-tips/">Cyber Security</a></li>
                                 </ul>
                             </li>
                             <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                            <li><a asp-area="" asp-controller="Student" asp-action="Devices">My Devices</a></li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li><a asp-area="" asp-controller="User" asp-action="Devices">My Devices</a></li>
+                            }
+                            else
+                            {
+                            }
                         </ul>
                         <partial name="_LoginPartial" />
                     </div>

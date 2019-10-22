@@ -10,6 +10,7 @@ namespace LabW11Authentication.Models
     {
         public IdentityUser User { get; set; }
         public ICollection<IdentityRole> Roles { get; set; }
+        public int Id { get; set; }
 
         public ApplicationUser()
         {

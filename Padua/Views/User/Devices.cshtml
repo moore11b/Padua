@@ -1,0 +1,45 @@
+﻿@model IEnumerable<LabW11Authentication.Models.ViewModels.DeviceListVM>
+
+@{
+    ViewData["Title"] = "Devices";
+}
+
+@{
+    var userId = ViewBag.Message;
+}
+
+<h2>Devices</h2>
+
+<p>
+    <a asp-controller="User" asp-action="AddDev">Add a new device</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DevName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DevMAC)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Where(p => p.UserId == userId))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DevName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DevMAC)
+                </td>
+                <td>
+                    <a asp-controller="User" asp-action="EditDevice" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-controller="User" asp-action="DeleteDevice" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

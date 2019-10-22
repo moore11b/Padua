@@ -1,0 +1,45 @@
+﻿@model LabW11Authentication.Models.ViewModels.AddDeviceVM
+
+@{
+    ViewData["Title"] = "AddDev";
+}
+
+@{
+    var userId = ViewBag.Message;
+}
+
+<h2>New Device Details</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddDev">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DevName" class="control-label"></label>
+                <input asp-for="DevName" class="form-control" />
+                <span asp-validation-for="DevName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DevMAC" class="control-label"></label>
+                <input asp-for="DevMAC" class="form-control"/>
+                <span asp-validation-for="DevMAC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input name="UserId" value="@userId" type="hidden" />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add Device" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="User" asp-action="Devices">Back to Devices</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

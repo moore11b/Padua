@@ -35,6 +35,18 @@ body {
     padding-right: 40px;
 }
 
+.navbar-brand {
+    padding: 0px; /* firefox bug fix */
+}
+
+    .navbar-brand > img {
+        height: 150%;
+        padding-left: 50px; /* firefox bug fix */
+        padding-right: 50px; /* firefox bug fix */
+        padding-bottom: 25px; /* firefox bug fix */
+        width: auto;
+    }
+
 .nav a {
     font-size: 1.3em !important;
 }
@@ -63,20 +75,116 @@ a:hover {
 
 p {
     text-indent: 50px;
-    font-size:15pt;
-}
-
-.logo-image {
-    position: relative;
-    top: -15px;
-    width: 50px;
-    height: 50px;
+    font-size: 15pt;
 }
 
 .about-logo {
     float: left;
+    margin-left: auto;
+    margin-right: auto;
     padding-top: 50px;
     padding-right: 30px;
     padding-bottom: 50px;
     padding-left: 80px;
+}
+
+@media (max-width: 1080px) {
+    .navbar-header {
+        float: none;
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+
+        .navbar-collapse.collapse {
+            display: none !important;
+        }
+
+    .navbar-nav {
+        float: none !important;
+        margin: 7.5px -15px;
+    }
+
+        .navbar-nav > li {
+            float: none;
+        }
+
+            .navbar-nav > li > a {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+}
+header, footer {
+    height: 4em; /* this sets the header's height to 4x the current font size */
+    color: red; /* this makes the font color in the header and footer a very light gray...off-white, really */
+    font-size: 2em; /* this sets the header's font size to 2x the default font size */
+    text-align: center; /* this makes the container(s) align their text to the center of the container */
+    padding-top: 1em; /* this adds padding to the top of the container. Note that the padding is 1em while the font size is 2em. This acts to center the (one-line) of content in its container */
+    margin-bottom: 1em; /* this adds space below the selector to separate it from follow-on content */
+    width: 100%; /* this makes the selector(s) span 100% of their container's width */
+    box-sizing: inherit; /* this makes the header and footer inherit the box-sizing setting of their parent, i.e., the body element */
+}
+
+footer {
+    height: 2em; /* we want this to be 2x the default font size, instead of 4x */
+    padding: .25em .25em; /* by making the padding a quarter of the default font size, top/bottom, we effectively center the (again, one-line) content within the footer element. .25em left and right indents the content a little */
+    text-indent: 2em; /* indents the text by 2x the default font size */
+    text-align: left; /* aligns the text to the left, over-riding the above rule's directive to center-align text */
+    font-size: 1em; /* resets the footer's font size to 1x the default font size */
+    margin: 2em auto; /* adds a margin around the footer that's 2x the default font size */
+}
+
+blockquote {
+    padding: .2em .5em; /* add some padding. Remember, the box-sizing: border-box rule from the body selector combines the content, padding, and border properties into the element's width, making it easier to align with other elements */
+    font-style: italic; /* well, this should be obvious */
+    border-left: 4px double #333; /* this creates a left border that displays as a double line */
+}
+
+.btn-primary {
+    width: 100px;
+}
+
+    .btn-primary a {
+        color: gold;
+        text-decoration: none;
+    }
+
+figure {
+    margin: 1em auto; /* adds a margin to the figure element that is 1x the default font-size top and bottom and centered within its container (i.e., 'auto') */
+}
+
+figcaption {
+    text-align: center; /* again, obvious */
+}
+
+h2 {
+    margin-top: 1em; /* this adds some white space above h2 elements */
+}
+
+img.cent {
+    display: block; /* to get images to utilize margins, we have to make them display as block-level elements */
+    border: 1px solid #005; /* add a blue border that's 1px wide and solid */
+    margin: auto; /* makes the image display centered */
+    max-width: 800px; /* sets the image's maximum width */
+    min-width: 300px; /* sets the image's minimum width */
+}
+
+
+p {
+    text-indent: 1em; /* add a little indentation */
+}
+
+.row {
+    border-bottom: 1px solid #333; /* add a bottom border to each row */
+}
+
+.carousel {
+    width: 75%;
+    margin: auto;
 }

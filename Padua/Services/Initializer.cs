@@ -40,6 +40,11 @@ namespace LabW11Authentication.Services
                 await _roleManager.CreateAsync(new IdentityRole { Name = "Student" });
             }
 
+            if (!_db.Roles.Any(r => r.Name == "Faculty"))
+            {
+                await _roleManager.CreateAsync(new IdentityRole { Name = "Faculty" });
+            }
+
             if (!_db.Users.Any(u => u.UserName == "admin@test.com"))
             {
                 var user = new IdentityUser

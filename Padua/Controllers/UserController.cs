@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using LabW11Authentication.Models.ViewModels;
 using LabW11Authentication.Services;
@@ -12,7 +13,7 @@ namespace LabW11Authentication.Controllers
 {
 
     /// <summary>
-    /// This class exists solely for admins only. This is for admins to create users if they cannot themselves, read all users, and assign roles to users for additional admins or security staff/personnel accounts
+    /// This class exists to handle all user interaction.
     /// </summary>
     /// 
     [Authorize]
@@ -47,7 +48,29 @@ namespace LabW11Authentication.Controllers
                    NumberOfRoles = u.Roles.Count
                });
             return View(userList);
+        }
 
+        /// <summary>
+        /// Pull all devices for current logged in user and pass to view for formatting.
+        /// Must be logged in to view, validated in Identity
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult Devices()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var devices = _repo.ReadAllDevices();
+            var deviceList = devices
+               .Select(u => new DeviceListVM
+               {
+                   Id = u.Id,
+                   DevName = u.DevName,
+                   DevMAC = u.DevMAC,
+                   UserId = u.UserId
+               });
+
+            ViewBag.Message = userId;
+            return View(deviceList);
         }
 
         /// <summary>
@@ -73,7 +96,7 @@ namespace LabW11Authentication.Controllers
         }
 
         /// <summary>
-        /// Submit role changes to DB
+        /// Submit role changes to DB (as admin editing accounts)
         /// </summary>
         /// <returns></returns>
         [HttpPost, ValidateAntiForgeryToken]
@@ -83,6 +106,10 @@ namespace LabW11Authentication.Controllers
             return RedirectToAction("Index", "User");
         }
 
+        /// <summary>
+        /// only admin has access to manually create users
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Create()
         {
             var user = _repo.Read(User.Identity.Name);
@@ -115,6 +142,107 @@ namespace LabW11Authentication.Controllers
             await _repo.CreateAsync(identityUser, userVM.Password);
 
             return RedirectToAction("Index", "User");
+        }
+
+        /// <summary>
+        /// add device to user account
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult AddDev()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (userId == null)
+            {
+                return View("Devices", "User");
+            }
+            ViewBag.Message = userId;
+            return View();
+        }
+
+        /// <summary>
+        /// New device addition and verification of no conflicting MAC addrs.
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost, ValidateAntiForgeryToken]
+        public IActionResult AddDev(AddDeviceVM deviceVM)
+        {
+            if (ModelState.IsValid)
+            {
+                var device = deviceVM.GetDevicesInstance();
+                _repo.AddDev(device);
+                return RedirectToAction("Devices", "User");
+            }
+            return View(deviceVM);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="devId"></param>
+        /// <returns></returns>
+        public IActionResult EditDevice([Bind(Prefix = "id")]int devId)
+        {
+            var device = _repo.ReadDeviceId(devId);
+
+            if (device == null)
+            {
+                return RedirectToAction("Devices", "User");
+            }
+            var viewModel = new EditDeviceVM
+            {
+                Id = device.Id,
+                DevName = device.DevName,
+                DevMAC = device.DevMAC,
+                UserId = device.UserId
+            };
+            return View(viewModel);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="deviceVM"></param>
+        /// <returns></returns>
+        [HttpPost, ValidateAntiForgeryToken]
+        public IActionResult EditDevice(EditDeviceVM deviceVM)
+        {
+            if (ModelState.IsValid)
+            {
+                var device = deviceVM.GetDevicesInstance();
+                _repo.UpdateDevice(device.Id, device);
+                return RedirectToAction("Devices", "User");
+            }
+            return View(deviceVM);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="personId"></param>
+        /// <param name="recId"></param>
+        /// <returns></returns>
+        public IActionResult DeleteDevice([Bind(Prefix = "id")]int devId)
+        {
+            var device = _repo.ReadDeviceId(devId);
+            if (device == null)
+            {
+                return RedirectToAction("Devices", "User");
+            }
+            return View(device);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="personId"></param>
+        /// <returns></returns>
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            _repo.DeleteDevice(id);
+            return RedirectToAction("Devices", "User");
         }
     }
 }
