@@ -12538,11 +12538,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Stuff\\SeniorYear\\FirstSemester\\CSCI4250\\Project\\PADUA\\Padua\\Padua\\Padua.csproj",
+      "projectUniqueName": "F:\\Stuff\\SeniorYear\\FirstSemester\\CSCI4250\\Project\\PADUA\\Padua\\Padua.csproj",
       "projectName": "Padua",
-      "projectPath": "F:\\Stuff\\SeniorYear\\FirstSemester\\CSCI4250\\Project\\PADUA\\Padua\\Padua\\Padua.csproj",
+      "projectPath": "F:\\Stuff\\SeniorYear\\FirstSemester\\CSCI4250\\Project\\PADUA\\Padua\\Padua.csproj",
       "packagesPath": "C:\\Users\\Tristan\\.nuget\\packages\\",
-      "outputPath": "F:\\Stuff\\SeniorYear\\FirstSemester\\CSCI4250\\Project\\PADUA\\Padua\\Padua\\obj\\",
+      "outputPath": "F:\\Stuff\\SeniorYear\\FirstSemester\\CSCI4250\\Project\\PADUA\\Padua\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

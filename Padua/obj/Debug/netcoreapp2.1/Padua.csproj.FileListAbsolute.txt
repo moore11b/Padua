@@ -150,3 +150,12 @@ F:\Stuff\SeniorYear\FirstSemester\CSCI4250\Project\PADUA\Padua\Padua\obj\Debug\n
 F:\Stuff\SeniorYear\FirstSemester\CSCI4250\Project\PADUA\Padua\Padua\obj\Debug\netcoreapp2.1\Razor\Views\User\AddDev.g.cshtml.cs
 F:\Stuff\SeniorYear\FirstSemester\CSCI4250\Project\PADUA\Padua\Padua\obj\Debug\netcoreapp2.1\Razor\Views\User\EditDevice.g.cshtml.cs
 F:\Stuff\SeniorYear\FirstSemester\CSCI4250\Project\PADUA\Padua\Padua\obj\Debug\netcoreapp2.1\Razor\Views\User\DeleteDevice.g.cshtml.cs
+F:\Stuff\SeniorYear\FirstSemester\CSCI4250\Project\PADUA\Padua\obj\Debug\netcoreapp2.1\Padua.csprojAssemblyReference.cache
+F:\Stuff\SeniorYear\FirstSemester\CSCI4250\Project\PADUA\Padua\obj\Debug\netcoreapp2.1\Padua.csproj.CoreCompileInputs.cache
+F:\Stuff\SeniorYear\FirstSemester\CSCI4250\Project\PADUA\Padua\obj\Debug\netcoreapp2.1\Padua.RazorAssemblyInfo.cache
+F:\Stuff\SeniorYear\FirstSemester\CSCI4250\Project\PADUA\Padua\obj\Debug\netcoreapp2.1\Padua.RazorAssemblyInfo.cs
+F:\Stuff\SeniorYear\FirstSemester\CSCI4250\Project\PADUA\Padua\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+F:\Stuff\SeniorYear\FirstSemester\CSCI4250\Project\PADUA\Padua\obj\Debug\netcoreapp2.1\Padua.AssemblyInfoInputs.cache
+F:\Stuff\SeniorYear\FirstSemester\CSCI4250\Project\PADUA\Padua\obj\Debug\netcoreapp2.1\Padua.AssemblyInfo.cs
+F:\Stuff\SeniorYear\FirstSemester\CSCI4250\Project\PADUA\Padua\obj\Debug\netcoreapp2.1\Padua.dll
+F:\Stuff\SeniorYear\FirstSemester\CSCI4250\Project\PADUA\Padua\obj\Debug\netcoreapp2.1\Padua.pdb
