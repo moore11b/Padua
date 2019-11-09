@@ -38,11 +38,13 @@ namespace LabW11Authentication
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
-               .AddRoles<IdentityRole>()
-               .AddUserManager<UserManager<IdentityUser>>()
-               .AddEntityFrameworkStores<ApplicationDbContext>();
-
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                       .AddUserManager<UserManager<IdentityUser>>()
+                       .AddRoles<IdentityRole>()
+                       .AddEntityFrameworkStores<ApplicationDbContext>()
+                       .AddDefaultUI()
+                       .AddDefaultTokenProviders();
+                                      
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddScoped<IRoleRepository, DbRoleRepository>();

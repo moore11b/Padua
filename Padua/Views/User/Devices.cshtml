@@ -6,6 +6,8 @@
 
 @{
     var userId = ViewBag.Message;
+    var user = "      User  -   ";
+    var device = "Device  -   ";
 }
 
 <h2>Devices</h2>
@@ -13,7 +15,7 @@
 <p>
     <a asp-controller="User" asp-action="AddDev">Add a new device</a>
 </p>
-<table class="table">
+<table id="myTable" class="table">
     <thead>
         <tr>
             <th>
@@ -28,18 +30,21 @@
     <tbody>
         @foreach (var item in Model.Where(p => p.UserId == userId))
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DevName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DevMAC)
-                </td>
-                <td>
-                    <a asp-controller="User" asp-action="EditDevice" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-controller="User" asp-action="DeleteDevice" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                <a href="mailto:besttm@etsu.edu?subject=Lost%20Or%20Stolen%20Device%20Report
+                &body=@device@Html.DisplayFor(modelItem => item.DevMAC)@user@userId">File a Report</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DevName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DevMAC)
+            </td>
+            <td>
+                <a id="delete" asp-controller="User" asp-action="DeleteDevice" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

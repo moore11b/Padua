@@ -1,10 +1,10 @@
-﻿@model IEnumerable<LabW11Authentication.Models.ViewModels.UserListVM>
+﻿@model IEnumerable<LabW11Authentication.Models.ViewModels.DeviceListVM>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "DeviceList";
 }
 
-<h2>Index</h2>
+<h2>DeviceList</h2>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -13,13 +13,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UserName)
+                @Html.DisplayNameFor(model => model.DevName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NumberOfRoles)
+                @Html.DisplayNameFor(model => model.DevMAC)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.UserId)
@@ -31,16 +31,19 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Email)
+                @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.UserName)
+                @Html.DisplayFor(modelItem => item.DevName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.NumberOfRoles)
+                @Html.DisplayFor(modelItem => item.DevMAC)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                <a id="delete" asp-controller="User" asp-action="DeleteDevice" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }

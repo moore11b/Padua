@@ -55,6 +55,36 @@
                             else
                             {
                             }
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                if (User.IsInRole("Admin"))
+                                {
+                                    <li><a asp-area="" asp-controller="User" asp-action="Index">All Users</a></li>
+                                }
+                            }
+                            else
+                            {
+                            }
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                if (User.IsInRole("Admin"))
+                                {
+                                    <li><a asp-area="" asp-controller="User" asp-action="DeviceList">All Devices</a></li>
+                                }
+                            }
+                            else
+                            {
+                            }
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                if (User.IsInRole("Admin"))
+                                {
+                                    <li><a asp-area="" asp-controller="User" asp-action="AssignRoles">Set Roles</a></li>
+                                }
+                            }
+                            else
+                            {
+                            }
                         </ul>
                         <partial name="_LoginPartial" />
                     </div>

@@ -31,6 +31,7 @@ namespace LabW11Authentication.Controllers
         /// If account is admin, show all users and their roles.
         /// </summary>
         /// <returns></returns>
+        [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
             var user = _repo.Read(User.Identity.Name);
@@ -45,9 +46,35 @@ namespace LabW11Authentication.Controllers
                {
                    Email = u.User.Email,
                    UserName = u.User.UserName,
-                   NumberOfRoles = u.Roles.Count
+                   NumberOfRoles = u.Roles.Count,
+                   UserId = u.User.Id
                });
             return View(userList);
+        }
+
+        /// <summary>
+        /// If account is admin, show all device dbo data.
+        /// </summary>
+        /// <returns></returns>
+        [Authorize(Roles = "Admin")]
+        public IActionResult DeviceList()
+        {
+            var user = _repo.Read(User.Identity.Name);
+            if (!user.HasRole("Admin"))
+            {
+                return LocalRedirect("/Identity/Account/AccessDenied");
+            }
+
+            var devices = _repo.ReadAllDevices();
+            var deviceList = devices
+               .Select(u => new DeviceListVM
+               {
+                   Id = u.Id,
+                   DevName = u.DevName,
+                   DevMAC = u.DevMAC,
+                   UserId = u.UserId
+               });
+            return View(deviceList);
         }
 
         /// <summary>
@@ -171,46 +198,6 @@ namespace LabW11Authentication.Controllers
             {
                 var device = deviceVM.GetDevicesInstance();
                 _repo.AddDev(device);
-                return RedirectToAction("Devices", "User");
-            }
-            return View(deviceVM);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="devId"></param>
-        /// <returns></returns>
-        public IActionResult EditDevice([Bind(Prefix = "id")]int devId)
-        {
-            var device = _repo.ReadDeviceId(devId);
-
-            if (device == null)
-            {
-                return RedirectToAction("Devices", "User");
-            }
-            var viewModel = new EditDeviceVM
-            {
-                Id = device.Id,
-                DevName = device.DevName,
-                DevMAC = device.DevMAC,
-                UserId = device.UserId
-            };
-            return View(viewModel);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="deviceVM"></param>
-        /// <returns></returns>
-        [HttpPost, ValidateAntiForgeryToken]
-        public IActionResult EditDevice(EditDeviceVM deviceVM)
-        {
-            if (ModelState.IsValid)
-            {
-                var device = deviceVM.GetDevicesInstance();
-                _repo.UpdateDevice(device.Id, device);
                 return RedirectToAction("Devices", "User");
             }
             return View(deviceVM);
