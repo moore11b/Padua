@@ -1,0 +1,6 @@
+C:\Users\moore\source\repos\Padua\Padua\obj\Debug\netcoreapp3.1\Padua.csproj.CoreCompileInputs.cache
+C:\Users\moore\source\repos\Padua\Padua\obj\Debug\netcoreapp3.1\Padua.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\moore\source\repos\Padua\Padua\obj\Debug\netcoreapp3.1\Padua.RazorAssemblyInfo.cache
+C:\Users\moore\source\repos\Padua\Padua\obj\Debug\netcoreapp3.1\Padua.RazorAssemblyInfo.cs
+C:\Users\moore\source\repos\Padua\Padua\obj\Debug\netcoreapp3.1\Padua.AssemblyInfoInputs.cache
+C:\Users\moore\source\repos\Padua\Padua\obj\Debug\netcoreapp3.1\Padua.AssemblyInfo.cs
